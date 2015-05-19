@@ -7,10 +7,10 @@ Cloned from `https://github.com/sbinet/go-readline`
 Installation
 ------------
 
-    $ go get github.com/gobs/readline
+    $ go get github.com/Intrising/readline
 
 
 Documentation
 -------------
 
-http://godoc.org/github.com/gobs/readline
+http://godoc.org/github.com/Intrising/readline
