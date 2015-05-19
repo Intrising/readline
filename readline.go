@@ -132,6 +132,9 @@ func GetLineBuffer() string {
 	return C.GoString(cstr)
 }
 
+func ClearSignals() {
+	_ = C.rl_clear_signals()
+}
 //////////////////////////////////////////////////////////////////////////////////
 
 // The signature for the rl_completion_entry_function callback
