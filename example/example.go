@@ -3,7 +3,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/gobs/readline"
+	"github.com/Intrising/readline"
 	"os"
 	"os/signal"
 	"strings"
