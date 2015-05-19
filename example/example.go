@@ -4,8 +4,21 @@ package main
 import (
 	"fmt"
 	"github.com/gobs/readline"
+	"os"
+	"os/signal"
 	"strings"
 )
+
+func CtrlC_Handler(sc <-chan os.Signal) {
+	sigtimes := 0
+	for s := range sc {
+		fmt.Println("Got signal:", s)
+		sigtimes += 1
+		if sigtimes >= 3 {
+			os.Exit(0)
+		}
+	}
+}
 
 var (
 	words   = []string{"alpha", "beta", "charlie", "delta", "another", "banana", "carrot", "delimiter"}
@@ -44,7 +57,15 @@ func CompletionEntry(prefix string, index int) string {
 	}
 }
 
+func setupMetaKey() {
+	readline.ClearSignals()
+	c := make(chan os.Signal, 1)
+	signal.Notify(c, os.Interrupt)
+	go CtrlC_Handler(c)
+}
+
 func main() {
+	setupMetaKey()
 	prompt := "by your command> "
 
 	// loop until ReadLine returns nil (signalling EOF)
