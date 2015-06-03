@@ -133,7 +133,7 @@ func GetLineBuffer() string {
 }
 
 func ClearSignals() {
-	C.rl_catch_signals=0;
+	C.rl_catch_sigwinch=0;
 	_ = C.rl_clear_signals()
 }
 //////////////////////////////////////////////////////////////////////////////////
